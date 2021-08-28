@@ -1,0 +1,88 @@
+<!-- 
+  <div *ngFor="let curent_event of all_events">
+  {{curent_event[0]}} <br>
+  {{curent_event[1]}}<br>
+  {{curent_event[2]}}  <br> 
+  {{curent_event[3]}}  <br>
+  {{curent_event[4]}} <br> 
+  </div> -->
+
+
+
+<div class="row">
+<div class="col-md" *ngFor="let curent_event of all_events; let i=index">
+  
+
+  <div class="card flex-md-row mb-4 box-shadow h-md-250" >
+              <div class="card-body d-flex flex-column align-items-start">
+               <img class="card-img-right flex-auto d-none d-block" style="width: 100%;" src="https://picsum.photos/600/300?random={{i}}" data-holder-rendered="true">
+
+               <h3 class="mb-0">
+                  <a class="text-dark" href="#">{{curent_event[1]}} </a>
+                </h3>
+                <div>
+                  <mark>ID:</mark> {{curent_event[0]}}<br>
+                <div><mark>Date:</mark> {{curent_event[2]}} - {{curent_event[3]}} {{time}}<br>
+                <div><mark>Price:</mark> {{curent_event[4]}} &euro;<br>
+                </div>
+                <!-- <div class="mb-1 text-muted">{{date}}  {{time}}</div> -->
+                <button class="btn btn-success" (click)="TestMethod('some text',100)">Chage title and price</button>
+
+                <p class="card-text mb-auto">{{curent_event[5]}} </p>
+                
+                
+
+
+                <h4> Properties</h4>
+                <div class="alert alert-success">
+                <ul>
+                  <li *ngFor="let option of options; let i=index">
+                    {{i+1}} - {{option}}
+                    <button class="btn btn-warning btn-sm" (click)="deleteOpt(option)">x</button>
+                  </li>
+                </ul>
+
+                    <form (submit)="addOption(my_option.value)">
+                      <div class="form-group">  
+                          <label for="option">New option:</label>
+                          <input type="" id="option" placeholder="add text" class="form-control" value="{{defaultValue}}" #my_option><br>
+                          <button type="submit" class="btn btn-success">Add</button>
+
+                      </div>  
+                    </form>
+                
+                </div>
+             
+               <button class="btn btn-danger btn-mdm" (click)="showEdit()">Edit</button><br>
+              <div *ngIf=isEdit>  
+              <h4>Edit object</h4>
+            
+                  <form >
+                      <div class="form-group">  
+                          <input type="text" placeholder="Enter new event Title" class="form-control"  name="event_title" [(ngModel)]="event_title"><br>
+
+                          <input type="text" placeholder="Date" class="form-control"  name="date" [(ngModel)]="date"><br>
+
+                          <input type="time" placeholder="Time" class="form-control"   name="time" [(ngModel)]="time"><br>
+
+                          <input type="number" placeholder="Price" class="form-control"   name="price" [(ngModel)]="price"><br>
+
+                          <textarea class="form-control" name="short_descript" [(ngModel)]="short_descript"></textarea>
+                         
+
+                      </div>  
+                    </form>
+                </div>
+
+
+
+
+
+
+
+               
+              </div>
+             
+            </div>
+</div>
+</div>
