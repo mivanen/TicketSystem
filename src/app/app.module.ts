@@ -8,10 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { EventComponent } from './components/event/event.component';
 import { TicketComponent } from './components/ticket/ticket.component';
-import { EventCreateComponent } from './components/event-create/event-create.component';
-import { TicketCreateComponent } from './components/ticket-create/ticket-create.component';
-import { TicketListComponent } from './components/ticket-list/ticket-list.component';
-import { EventListComponent } from './components/event-list/event-list.component';
+
+
 
 const appRoutes: Routes= [
 {path:'',component:EventComponent},
@@ -22,11 +20,8 @@ const appRoutes: Routes= [
   declarations: [
     AppComponent,
     EventComponent,
-    TicketComponent,
-    EventCreateComponent,
-    TicketCreateComponent,
-    TicketListComponent,
-    EventListComponent
+    TicketComponent
+    
   ],
   imports: [
     BrowserModule,
