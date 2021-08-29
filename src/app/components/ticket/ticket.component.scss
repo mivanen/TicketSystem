@@ -1,7 +1,10 @@
+$block-border-color: #CCC;
+$block-bg-color: #FFF;
+
 .ticket_block
 {
-border: 1px solid #CCC;
-background-color: #FFF;
+border: 1px solid $block-border-color;
+background-color: $block-bg-color;
 padding: 10px;
 border-radius:5px;
 }
@@ -20,5 +23,5 @@ margin-right:10px;
 {
 	text-align: right;
 	padding-top: 10px;
-	border-top: 1px solid #CCC;
+	border-top: 1px solid $block-border-color;
 }
