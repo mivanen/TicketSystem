@@ -1,27 +1,80 @@
 
-<div class="row">
-<div class="col-md-4" *ngFor="let curent_event of events; let i=index">
+<div class="row"> 
+  <div class="col-3 ticket_list">
+    
+      
+        <h3> Tickets</h3>
+        <div  *ngIf="tickets.length>0">
+      
+           <div *ngFor="let ticket of tickets; let y=index">
+              
+              <div *ngIf="ticket[3]=='true'" class="ticket_block" > 
+                <mark> Ticket id: </mark> {{ticket[0]}}<br>
+                <mark> Event: </mark> {{ticket[2]}} (id: {{ticket[1]}})<br>
+
+
+                <button class="return_btn btn btn-warning" (click)="ReturnTicket(y)">Return ticket</button>
+              </div>
+              <!-- <div #elseBlock>Returned</div> -->
+              <!-- <ng-template #elseBlock><div class="ticket_block">Returned</div></ng-template> -->
+            </div>
+        
+        </div>
+        <div *ngIf="tickets.length>0">
+          <b>Sold ticekts total: {{ticket_total}}</b>
+        </div>
+      
+
+
+
+
+    
+  </div>  
+  <div class="col"> 
+   
+   <h2> Events</h2>   
+
+
+
+
+   <div class="row">
+
+    <div class="col-md-4" *ngFor="let curent_event of events; let i=index">
   
 
-  <div class="card flex-md-row mb-4 box-shadow h-md-250" >
+              <div class="card flex-md-row mb-4 box-shadow h-md-250" >
               <div class="card-body d-flex flex-column align-items-start">
                <img class="card-img-right flex-auto d-none d-block" style="width: 100%;" src="https://picsum.photos/600/300?random={{i}}" data-holder-rendered="true">
 
                <div class="title_block">
 
-               <h3 class="mb-0">{{events[i][1]}}</h3>
+               <h3 class="mb-0">{{curent_event[1]}}</h3>
                 </div>
                 <div class="detail_block">
-                  <mark>Nr.:</mark> {{events[i][0]}}<br>
-                  <mark>Date:</mark> {{events[i][2]}} - {{events[i][3]}}<br>
-                  <mark>Price:</mark> {{events[i][4]}} &euro;<br>
+                  <mark>Nr.:</mark> {{curent_event[0]}}<br>
+                  <mark>Date:</mark> {{curent_event[2]}} - {{events[i][3]}}<br>
+                  <mark>Price:</mark> {{curent_event[4]}} &euro;<br>
 
-                <div *ngIf="events[i][8]">
-                  <mark>Avaible tickets:</mark> <b>{{events[i][6]}} tk.</b><br> 
-                  <button class="btn btn-success sell_btn" (click)="SellTicket(i)">Sell ticket</button>
+                <div *ngIf="events[i][9]">
+                  <mark>Avaible tickets:</mark> <b>
+
+                  <span >
+                    {{curent_event[7]}} of 
+                   </span> 
+                   {{curent_event[6]}} tk.
+                 
+                 
+
+                </b><br> 
+                    <button class="btn btn-success sell_btn" (click)="SellTicket(i)">Sell ticket</button>
+
+                    
+
+                   
+
                 </div>
                 
-                <div *ngIf="!events[i][8]" class="alert alert-warning">
+                <div *ngIf="!events[i][9]" class="alert alert-warning">
                   No tickets!
                 </div>
 
@@ -30,7 +83,7 @@
                 <!-- <div class="mb-1 text-muted">{{date}}  {{time}}</div> -->
                
 
-                <p class="card-text mb-auto">{{events[i][5]}} </p>
+                <p class="card-text mb-auto">{{curent_event[5]}} </p>
                 
                 
 
@@ -38,34 +91,34 @@
                 
              
                <hr>
-               <button class="btn btn-warning btn-mdm" (click)="showEdit(i)" *ngIf=!events[i][7]>Edit</button>
+               <button class="btn btn-warning btn-mdm" (click)="showEdit(i)" *ngIf=!events[i][8]>Edit</button>
               
-              <div *ngIf=events[i][7]>  
-              <h4>Edit event nr. {{events[i][0]}}</h4>
+              <div *ngIf=events[i][8]>  
+              <h4>Edit event nr. {{curent_event[0]}}</h4>
             
                   <form >
                       <div class="form-group">  
                          
 
                           <label for="tickets">Tickets:</label>
-                          <input type="number" placeholder="Tickets" class="form-control" id="tickets"   name="tickets" [(ngModel)]="events[i][6]" (click)="CheckTickets(i)">
+                          <input type="number" placeholder="Tickets" class="form-control" id="tickets"   name="tickets" [(ngModel)]="curent_event[6]" (click)="CheckTickets(i)">
                           
-                          <label for="event_title">event_title:</label>
-                          <input type="text" placeholder="Enter new event Title" id="event_title"    class="form-control"  name="event_title" [(ngModel)]="events[i][1]">
+                          <label for="event_title">Title:</label>
+                          <input type="text" placeholder="Enter new event Title" id="event_title"    class="form-control"  name="event_title" [(ngModel)]="curent_event[1]">
 
-                          <label for="date">date:</label>
-                          <input type="date" placeholder="Date" class="form-control"  id="date"  name="date" [(ngModel)]="events[i][2]">
+                          <label for="date">Date:</label>
+                          <input type="date" placeholder="Date" class="form-control"  id="date"  name="date" [(ngModel)]="curent_event[2]">
 
-                          <label for="time">time:</label>
-                          <input type="time" placeholder="Time" class="form-control"  id="time"  name="time" [(ngModel)]="events[i][3]">
+                          <label for="time">Time:</label>
+                          <input type="time" placeholder="Time" class="form-control"  id="time"  name="time" [(ngModel)]="curent_event[3]">
 
-                          <label for="price">price:</label>
-                          <input type="number" placeholder="Price" class="form-control" id="price"    name="price" [(ngModel)]="events[i][4]">
+                          <label for="price">Price:</label>
+                          <input type="number" placeholder="Price" class="form-control" id="price"    name="price" [(ngModel)]="curent_event[4]">
 
-                          <label for="short_descript">short_descript:</label>
-                          <textarea class="form-control" id="short_descript"   name="short_descript" [(ngModel)]="events[i][5]"></textarea>
+                          <label for="short_descript">Description:</label>
+                          <textarea class="form-control" id="short_descript" name="short_descript" [(ngModel)]="curent_event[5]"></textarea>
 
-                          <br><button class="btn btn-warning btn-mdm" (click)="showEdit(i)" *ngIf=events[i][7]>Close</button>
+                          <br><button class="btn btn-warning btn-mdm" (click)="showEdit(i)" *ngIf=curent_event[8]>Close</button>
                          
 
                       </div>  
@@ -82,5 +135,36 @@
               </div>
              
             </div>
-</div>
-</div>
+
+
+              </div>
+             
+            </div>
+
+
+
+
+
+
+  </div>  
+</div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ticket-system';
+
+
+test_var='TEST';
+
 }
+
