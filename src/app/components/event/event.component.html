@@ -11,21 +11,27 @@
 
               
               <div class="ticket_card" >
-                 <mark> Ticket id: </mark> {{ticket[0]}}<br>
-                <mark> Status: </mark>{{ticket[3]}}<br>
-                 <mark> Event id: </mark>{{ticket[1]}}<br><b>{{ticket[2]}}</b><br>
+                
+                 <mark> Ticket Nr.: </mark><b>{{ticket[0]}}</b><br>
+                 <mark> Sold for: </mark> {{ticket[4]}} &euro;<br>
+                 <mark> Date & time : </mark> {{ticket[5]}}<br>
+                
+                <b>{{ticket[2]}}</b> <mark>(id. {{ticket[1]}})</mark><br>
+      
+
+                <div *ngIf="ticket[3]==false" class="alert alert-warning">Returned</div>
 
 
 
                 <button *ngIf="ticket[3]==true" class="return_btn btn btn-warning" (click)="ReturnTicket(ticket[0])">Return ticket ({{ticket[0]}})</button>
               </div>
-              <!-- <div #elseBlock>Returned</div> -->
-              <!-- <ng-template #elseBlock><div class="ticket_block">Returned</div></ng-template> -->
+
             </div>
         
         </div>
         <div>
-          <b>Sold tickets total: {{tickets.length}}</b>
+          <b>Sold tickets: {{getSoldTickets()}}</b><br>
+          <b>Earned money: {{getEarnedMoney()}}&euro;</b>
         </div>
       
 
@@ -48,7 +54,8 @@
 
               <div class="card flex-md-row mb-4 box-shadow h-md-250" >
               <div class="card-body d-flex flex-column align-items-start">
-               <img class="card-img-right flex-auto d-none d-block" style="width: 100%;" src="https://picsum.photos/600/300?random={{i}}" data-holder-rendered="true">
+              <!--  <img class="card-img-right flex-auto d-none d-block" style="width: 100%;" src="https://picsum.photos/600/300?random={{i}}" data-holder-rendered="true"> -->
+              <img class="card-img-right flex-auto d-none d-block" style="width: 100%;" src="https://www.piletilevi.ee/imageGenerator/eventDetails/{{curent_event[11]}}.webp" data-holder-rendered="true">
 
                <div class="title_block">
 
@@ -58,6 +65,7 @@
                   <mark>Nr.:</mark> {{curent_event[0]}}<br>
                   <mark>Date:</mark> {{curent_event[2]}} - {{events[i][3]}}<br>
                   <mark>Price:</mark> {{curent_event[4]}} &euro;<br>
+                  <mark>Place:</mark> {{curent_event[10]}}<br>
 
                 <div *ngIf="events[i][9]">
                   <mark>Avaible tickets:</mark> <b>
@@ -84,9 +92,6 @@
 
 
                 <div>
-                <!-- <div class="mb-1 text-muted">{{date}}  {{time}}</div> -->
-               
-
                 <p class="card-text mb-auto">{{curent_event[5]}} </p>
                 
                 
@@ -98,9 +103,9 @@
                <button class="btn btn-warning btn-mdm" (click)="showEdit(i)" *ngIf=!events[i][8]>Edit</button>
               
               <div *ngIf=events[i][8]>  
-              <h4>Edit event nr. {{curent_event[0]}}</h4>
-            
-                  <form >
+                <h4>Edit event nr. {{curent_event[0]}}</h4>
+              
+                  <form>
                       <div class="form-group">  
                          
 
@@ -130,25 +135,15 @@
                 </div>
 
 
-
-
-
-
-
                
               </div>
              
             </div>
 
 
-              </div>
-             
-            </div>
-
-
-
-
-
+          </div>
+         
+        </div>
 
   </div>  
 </div>  
