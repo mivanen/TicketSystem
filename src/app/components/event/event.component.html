@@ -1,27 +1,31 @@
-
-<div class="row"> 
-  <div class="col-3 ticket_list">
+ 
+<div class="row ">  
+  <div class="col-3 tickets_block">
     
-      
+    
         <h3> Tickets</h3>
-        <div  *ngIf="tickets.length>0">
+        <div   *ngIf="tickets.length>0" class="ticket_list">
       
-           <div *ngFor="let ticket of tickets; let y=index">
+           <div  *ngFor="let ticket of tickets">
+
+
               
-              <div *ngIf="ticket[3]=='true'" class="ticket_block" > 
-                <mark> Ticket id: </mark> {{ticket[0]}}<br>
-                <mark> Event: </mark> {{ticket[2]}} (id: {{ticket[1]}})<br>
+              <div class="ticket_card" >
+                 <mark> Ticket id: </mark> {{ticket[0]}}<br>
+                <mark> Status: </mark>{{ticket[3]}}<br>
+                 <mark> Event id: </mark>{{ticket[1]}}<br><b>{{ticket[2]}}</b><br>
 
 
-                <button class="return_btn btn btn-warning" (click)="ReturnTicket(y)">Return ticket</button>
+
+                <button *ngIf="ticket[3]==true" class="return_btn btn btn-warning" (click)="ReturnTicket(ticket[0])">Return ticket ({{ticket[0]}})</button>
               </div>
               <!-- <div #elseBlock>Returned</div> -->
               <!-- <ng-template #elseBlock><div class="ticket_block">Returned</div></ng-template> -->
             </div>
         
         </div>
-        <div *ngIf="tickets.length>0">
-          <b>Sold ticekts total: {{ticket_total}}</b>
+        <div>
+          <b>Sold tickets total: {{tickets.length}}</b>
         </div>
       
 
