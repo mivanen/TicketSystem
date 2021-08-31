@@ -11,7 +11,7 @@
 
               
               <div class="ticket_card" >
-                
+
                  <mark> Ticket Nr.: </mark><b>{{ticket[0]}}</b><br>
                  <mark> Sold for: </mark> {{ticket[4]}} &euro;<br>
                  <mark> Date & time : </mark> {{ticket[5]}}<br>
@@ -23,7 +23,7 @@
 
 
 
-                <button *ngIf="ticket[3]==true" class="return_btn btn btn-warning" (click)="ReturnTicket(ticket[0])">Return ticket ({{ticket[0]}})</button>
+                <button *ngIf="ticket[3]==true" class="return_btn btn btn-warning" (click)="ReturnTicket(ticket[0])">Return ticket</button>
               </div>
 
             </div>
